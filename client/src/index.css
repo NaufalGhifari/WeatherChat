@@ -12,7 +12,17 @@ code {
     monospace;
 }
 
-.home-title{
-  background-color: black;
-  color: whitesmoke;
+.sign-log-in-buttons-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.sign-log-in-buttons-list li{
+  margin: 0em 2em 0em 2em
+}
+
+.text-centered{
+  text-align: center;
 }
