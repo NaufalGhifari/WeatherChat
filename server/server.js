@@ -1,23 +1,32 @@
 require('dotenv').config();
 const express = require('express');
+const fetch = require('node-fetch');
 
 const app = express();
 
 /* handle weather api stuff */
-app.get('/api/weather/', (req, res) =>{
-    let lat = 44.34;
-    let lon = 10.99;
+app.get('/weather', (req, res) =>{
 
-    // if you need to change the lat and lon, change it here
+    console.log('inside app.get(/\'weather\')')
 
-    API_CALL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+    const API_KEY = '2b72ea9fe4a01260fc38182de45220c5';
+    const lat = 44.34;
+    const lon = 10.99;
 
-    axios.get(API_CALL).then( response => {
-        res.send(response.data);
-    }).catch(error => {
-        console.error(error);
-        res.status(500).send('❌Error fetching weather data');
-    });
+    //API_CALL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+    API_CALL = 'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=2b72ea9fe4a01260fc38182de45220c5'
+
+    fetch(API_CALL)
+    .then(res => res.json())
+    .then(data => {
+        console.log(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`)
+        console.log(data)
+        res.send(data);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('Error retrieving weather data.');
+    })
 });
 
 PORT = process.env.SERVER_PORT
