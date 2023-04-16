@@ -5,7 +5,7 @@ function HomeTitle() {
     <div>
         <div className='HomeTitle-div text-centered'>
           <h1>Weather Chat</h1>
-          <h2>Because talking about the weather is always a safe bet.</h2>
+          <h2>Because the weather is the best topic there is.</h2>
         </div>
     </div>
   )

@@ -8,8 +8,9 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /*font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;*/
+    font-family: "Inter UI",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 .sign-log-in-buttons-list {
@@ -25,4 +26,153 @@ code {
 
 .text-centered{
   text-align: center;
+}
+
+.line {
+  border-bottom: 3px solid black;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+/* weather widget */
+.weather-widget-card {
+  margin: 0 auto;
+  width: 30%;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.big-temp-text {
+  font-size: 50px;
+}
+
+.animated-gradient-warm{
+  background: linear-gradient(to right, #ffae00, #ff6a00, #ffff00, #ffae00);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient 15s ease infinite;
+}
+
+.animated-gradient-cool{
+  background: linear-gradient(to right, #00ffdd, #007bff, #00ff88, #00fff7);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient 15s ease infinite;
+}
+
+/* comments */
+.comments-div{
+
+}
+
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/*#################################*/
+.comment-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.comments {
+  margin-top: 20px;
+}
+
+.comment {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.comment-author {
+  margin: 0;
+}
+
+.comment-date {
+  font-size: 12px;
+}
+
+.comment-body {
+  margin: 0;
+}
+
+#comment-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/*#################################*/
+
+/* iPhone 12 Pro screen or smaller goes here */
+@media only screen and (max-width: 428px) {  
+  div{
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  
+  .weather-widget-card {
+    width: 80%;
+  }
+
+  h2{
+    font-size: medium;
+  }
+}
+
+/* Between iPad Pro and iPhone 12 Pro */
+@media only screen and (min-width: 428px) and (max-width: 768px) {
+  .weather-widget-card {
+    width: 60%;
+  }
 }

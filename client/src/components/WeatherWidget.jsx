@@ -6,27 +6,28 @@ function WeatherWidget() {
 
     const [weatherData, setWeatherData] = useState({});
     useEffect( () => {
-
-        async function getWeatherData(){
-            await fetch('/weather').then(
-                res => res.json()
-            ).then(
-                data => setWeatherData(data)
-            ).catch(err => console.log(err))
-        };
-        getWeatherData();
-
+            fetch('/weather')
+            .then(res => res.json())
+            .then(data => {setWeatherData(data)})
+            .catch(err => console.log(err))
     }, []);
 
     console.log(weatherData);
 
     return (
-        <div className=' text-centered'>
-            <p>+++++++++++++++++++</p>
-            
-            <p>Current temperature: {weatherData.main.temp}</p>
-            <p>Feels like: {weatherData.main.feels_like}</p>
-            <p>+++++++++++++++++++</p>
+        <div className='weather-widget-card'>
+
+            <h2>Jakarta, Indonesia</h2>
+
+            {(typeof weatherData.main === 'undefined') ? (
+                <h3>Loading weather data...</h3>
+            ) : (
+                <div>
+                    <h1 className='big-temp-text animated-gradient-warm'>{weatherData.main.temp} C</h1>
+                    <h2>Feels like: {weatherData.main.feels_like} C</h2>
+                </div>
+                
+            )}
         </div>
     )
 };
