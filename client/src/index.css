@@ -85,6 +85,16 @@ code {
   }
 }
 
+/* login and signup */
+.login-signup-div button{
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 /*#################################*/
 .comment-section {
   width: 100%;
