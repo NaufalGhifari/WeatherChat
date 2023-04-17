@@ -5,19 +5,59 @@ const fetch = require('node-fetch');
 
 const app = express();
 
-/* api test call */
-app.get('/meal', (req,res) => {
-    console.log('Executing \'/meal\'')
-    let API_CALL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata'
-    fetch(API_CALL).
-    then(res => res.json()).
-    then(data =>{
-        res.send(data);
-    }).catch(err => {
-        console.log(err);
-        res.status(500).send('Error retrieving meal data.');
-    });
+/* connect to mongodb */
+const mongooseClient = require('mongoose');
+console.log(`process.env.MONGODB_URL: ${process.env.MONGODB_URL}`);
+mongooseClient.connect(
+    process.env.MONGODB_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+)
+.then(() => console.log("Connected to MongoDB."))
+.catch((err) => console.log(err));
+
+/* make a schema and model for comments */
+const commentSchema = new mongooseClient.Schema({
+    username: String,
+    comment: String    
 });
+
+const Comment = new mongooseClient.model('Comment', commentSchema, 'comments_collection');
+
+/* create a new comment */
+/*const newComment = new Comment({
+    username: "jonathan from express",
+    comment: "Hi, im from express"
+});*/
+
+/* save the new comment to the db */
+/*newComment.save()
+.then(
+    () => console.log("Entry added to mongodb"),
+    (err) => console.log(err)
+); */
+
+app.get('/comments', (req, res) => {
+    async function getAllComments(){
+        try{
+            await MyModel.find({});
+        }
+        catch{
+            err => console.log(err)    
+        }
+    };
+    
+    getAllComments();
+    
+});
+
+
+
+
+
+
+
 
 /* handle weather api stuff */
 app.get('/weather', (req, res) =>{
