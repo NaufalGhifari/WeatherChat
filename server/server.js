@@ -38,6 +38,16 @@ const Comment = new mongooseClient.model('Comment', commentSchema, 'comments_col
     (err) => console.log(err)
 ); */
 
+// GET function that retrieves all entries in comments_db database
+app.get('/comments', (req, res) => {
+    Comment.find({})
+    .then(
+        (data) => res.send(data),
+        (err) => console.log(err)
+    );
+});
+
+/*
 app.get('/comments', (req, res) => {
     async function getAllComments(){
         try{
@@ -51,6 +61,7 @@ app.get('/comments', (req, res) => {
     getAllComments();
     
 });
+*/
 
 
 

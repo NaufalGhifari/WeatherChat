@@ -1,30 +1,35 @@
+import { useEffect, useState } from 'react';
 import React from 'react';
 
 function Comments() {
 
+    // fetch data from '/comments' endpoint
+    const [commentsData, setCommentsData] = useState([]);
+    useEffect(() => {
+        fetch('/comments')
+        .then(response => response.json())
+        .then(data => setCommentsData(data));
+    }
+    , []);
+    
+    console.log(commentsData);
+
     return(
-        <div className='comments-div'>
-            <h2 className='text-centered'>Now, what do you think?</h2>
+        <div className="comments-div">
             
-            <div class="comment-section">
-            <h2>Comments</h2>
-            <div class="comments">
-                
-                <div class="comment">
-                <div class="comment-details">
-                    <h4 class="comment-author">John Doe</h4>
-                    <span class="comment-date">2 hours ago</span>
+            {commentsData.map((comment) => (
+                <div class="comments">
+                    <div class="comment">
+                    <div class="comment-details">
+                        <h4 class="comment-author">{comment.username}</h4>
+                    </div>
+                    <p class="comment-body">{comment.comment}</p>
+                    </div>                    
                 </div>
-                <p class="comment-body">This is a comment.</p>
-                </div>
-                <div class="comment">
-                <div class="comment-details">
-                    <h4 class="comment-author">Jane Doe</h4>
-                    <span class="comment-date">1 hour ago</span>
-                </div>
-                <p class="comment-body">This is another comment.</p>
-                </div>
-            </div>
+            ))}
+
+
+            
 
             <form id="comment-form">
                 <div class="form-group">
@@ -37,11 +42,12 @@ function Comments() {
                 </div>
                 <button type="submit">Post Comment</button>
             </form>
-            </div>
-
             
         </div>
     )
 };
 
 export default Comments
+
+
+
