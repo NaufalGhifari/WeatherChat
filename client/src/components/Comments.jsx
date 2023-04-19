@@ -28,9 +28,6 @@ function Comments() {
                 </div>
             ))}
 
-
-            
-
             <form id="comment-form">
                 <div class="form-group">
                     <label for="name">Name</label>
